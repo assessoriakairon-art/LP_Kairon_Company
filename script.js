@@ -271,21 +271,65 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    formFeedback.textContent = "Lead capturado com sucesso. Conecte este formulário ao seu endpoint/API para envio real.";
+    leadForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (!formFeedback) return;
+
+  const formData = new FormData(leadForm);
+  const nome = String(formData.get("nome") || "").trim();
+  const empresa = String(formData.get("empresa") || "").trim();
+  const email = String(formData.get("email") || "").trim();
+  const whatsapp = String(formData.get("whatsapp") || "").trim();
+  const segmento = String(formData.get("segmento") || "").trim();
+  const objetivo = String(
+    formData.get("objetivo") ||
+    formData.get("objetivoPrincipal") ||
+    ""
+  ).trim();
+
+  if (!nome || !empresa || !email || !whatsapp || !segmento || !objetivo) {
+    formFeedback.textContent = "Preencha todos os campos obrigatórios para continuar.";
+    formFeedback.style.color = "var(--color-error)";
+    return;
+  }
+
+  const seuNumero = "5561982179483";
+  const mensagem = `Olá! Novo lead da landing page:
+
+Nome: ${nome}
+Empresa: ${empresa}
+Email: ${email}
+WhatsApp: ${whatsapp}
+Segmento: ${segmento}
+Objetivo principal: ${objetivo}`;
+
+  const url = `https://wa.me/${seuNumero}?text=${encodeURIComponent(mensagem)}`;
+
+  formFeedback.textContent = "Redirecionando para o WhatsApp...";
+  formFeedback.style.color = "var(--color-cyan)";
+
+  window.open(url, "_blank", "noopener,noreferrer");
+
+  leadForm.reset();
+});
+
+
+   /* formFeedback.textContent = "Lead capturado com sucesso. Conecte este formulário ao seu endpoint/API para envio real.";
     formFeedback.style.color = "var(--color-cyan)";
 
     console.log("Payload pronto para integração:", Object.fromEntries(formData.entries()));
 
-    /*
+    
       Exemplo de integração:
       fetch("https://seu-endpoint.com/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Object.fromEntries(formData.entries()))
       })
-    */
+    
 
-    leadForm.reset();
+    leadForm.reset();*/
   });
 });
 
