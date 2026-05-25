@@ -287,6 +287,18 @@
         </div>
 
         <div class="field field-full">
+          <label for="faturamento">Qual o faturamento mensal da sua empresa?</label>
+          <select id="faturamento" name="faturamento" required>
+            <option value="">Selecione uma opção</option>
+            <option>Até 29 mil</option>
+            <option>De 30 mil até 50 mil</option>
+            <option>De 51 mil até 120 mil</option>
+            <option>De 121 até 300 mil</option>
+            <option>+300 mil</option>
+          </select>
+        </div>
+
+        <div class="field field-full">
           <label for="objetivo">Objetivo principal</label>
           <textarea
             id="objetivo"
@@ -597,6 +609,73 @@
       </div>
     </section>
   </main>
+
+  <div
+    class="lead-modal"
+    id="leadModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="leadModalTitle"
+    aria-hidden="true"
+  >
+    <div class="lead-modal-backdrop" data-modal-close></div>
+
+    <div class="lead-modal-card glass-card" role="document">
+      <button
+        type="button"
+        class="lead-modal-close"
+        aria-label="Fechar"
+        data-modal-close
+      >×</button>
+
+      <div class="lead-modal-view" data-modal-view="confirm">
+        <p class="lead-modal-tag">Atenção</p>
+        <h3 id="leadModalTitle">Antes de finalizar, um ponto importante.</h3>
+        <p class="lead-modal-text">
+          Nossa assessoria completa tem um investimento inicial a partir de
+          <strong>R$ 2.500/mês</strong>. Esse valor faz sentido para o momento
+          atual da sua empresa?
+        </p>
+
+        <div class="lead-modal-actions">
+          <button type="button" class="btn btn-primary btn-lg magnetic" data-modal-confirm>
+            Sim, faz sentido
+          </button>
+          <button type="button" class="btn btn-secondary btn-lg" data-modal-decline>
+            Ainda não no momento
+          </button>
+        </div>
+      </div>
+
+      <div class="lead-modal-view" data-modal-view="decline" hidden>
+        <p class="lead-modal-tag">Tudo bem</p>
+        <h3>Entendemos perfeitamente.</h3>
+        <p class="lead-modal-text">
+          No momento, nosso modelo de assessoria completo pode não ser o melhor
+          encaixe para o seu negócio — mas queremos te ajudar a chegar nesse
+          próximo nível.
+        </p>
+        <p class="lead-modal-text">
+          Acompanhe nossos conteúdos gratuitos no Instagram da Kairon Company e
+          comece a estruturar sua operação desde já.
+        </p>
+
+        <div class="lead-modal-actions">
+          <a
+            href="https://www.instagram.com/kairon.company/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary btn-lg magnetic"
+          >
+            Acessar Instagram da Kairon
+          </a>
+          <button type="button" class="btn btn-secondary btn-lg" data-modal-close>
+            Fechar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="container footer-shell">

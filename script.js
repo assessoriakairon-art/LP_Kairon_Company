@@ -255,8 +255,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  leadForm?.addEventListener("submit", (event) => {
-    event.preventDefault();
+  const leadModal = document.getElementById("leadModal");
+  const modalConfirmBtn = leadModal?.querySelector("[data-modal-confirm]");
+  const modalDeclineBtn = leadModal?.querySelector("[data-modal-decline]");
+  const modalCloseEls = leadModal?.querySelectorAll("[data-modal-close]");
+  const modalViews = leadModal?.querySelectorAll("[data-modal-view]");
+
+  const showModalView = (viewName) => {
+    modalViews?.forEach((view) => {
+      view.hidden = view.dataset.modalView !== viewName;
+    });
+  };
+
+  const openModal = () => {
+    if (!leadModal) return;
+    showModalView("confirm");
+    leadModal.classList.add("is-open");
+    leadModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+  };
+
+  const closeModal = () => {
+    if (!leadModal) return;
+    leadModal.classList.remove("is-open");
+    leadModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  };
+
+  modalCloseEls?.forEach((el) => el.addEventListener("click", closeModal));
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && leadModal?.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+
+  const submitLeadToWhatsApp = () => {
+    if (!leadForm) return;
 
     const formData = new FormData(leadForm);
     const nome = String(formData.get("nome") || "").trim();
@@ -264,72 +299,66 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = String(formData.get("email") || "").trim();
     const whatsapp = String(formData.get("whatsapp") || "").trim();
     const segmento = String(formData.get("segmento") || "").trim();
+    const faturamento = String(formData.get("faturamento") || "").trim();
+    const objetivo = String(formData.get("objetivo") || "").trim();
 
-    if (!nome || !empresa || !email || !whatsapp || !segmento) {
-      formFeedback.textContent = "Preencha os campos obrigatórios para entrar na fila de análise.";
-      formFeedback.style.color = "var(--color-error)";
-      return;
-    }
-
-    leadForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  if (!formFeedback) return;
-
-  const formData = new FormData(leadForm);
-  const nome = String(formData.get("nome") || "").trim();
-  const empresa = String(formData.get("empresa") || "").trim();
-  const email = String(formData.get("email") || "").trim();
-  const whatsapp = String(formData.get("whatsapp") || "").trim();
-  const segmento = String(formData.get("segmento") || "").trim();
-  const objetivo = String(
-    formData.get("objetivo") ||
-    formData.get("objetivoPrincipal") ||
-    ""
-  ).trim();
-
-  if (!nome || !empresa || !email || !whatsapp || !segmento || !objetivo) {
-    formFeedback.textContent = "Preencha todos os campos obrigatórios para continuar.";
-    formFeedback.style.color = "var(--color-error)";
-    return;
-  }
-
-  const seuNumero = "5561982179483";
-  const mensagem = `Olá! Novo lead da landing page:
+    const seuNumero = "5561982179483";
+    const mensagem = `Olá! Novo lead da landing page:
 
 Nome: ${nome}
 Empresa: ${empresa}
 Email: ${email}
 WhatsApp: ${whatsapp}
 Segmento: ${segmento}
+Faturamento mensal: ${faturamento}
 Objetivo principal: ${objetivo}`;
 
-  const url = `https://wa.me/${seuNumero}?text=${encodeURIComponent(mensagem)}`;
+    const url = `https://wa.me/${seuNumero}?text=${encodeURIComponent(mensagem)}`;
 
-  formFeedback.textContent = "Redirecionando para o WhatsApp...";
-  formFeedback.style.color = "var(--color-cyan)";
+    if (formFeedback) {
+      formFeedback.textContent = "Redirecionando para o WhatsApp...";
+      formFeedback.style.color = "var(--color-cyan)";
+    }
 
-  window.open(url, "_blank", "noopener,noreferrer");
+    window.open(url, "_blank", "noopener,noreferrer");
+    leadForm.reset();
+  };
 
-  leadForm.reset();
-});
+  modalConfirmBtn?.addEventListener("click", () => {
+    closeModal();
+    submitLeadToWhatsApp();
+  });
 
+  modalDeclineBtn?.addEventListener("click", () => {
+    showModalView("decline");
+  });
 
-   /* formFeedback.textContent = "Lead capturado com sucesso. Conecte este formulário ao seu endpoint/API para envio real.";
-    formFeedback.style.color = "var(--color-cyan)";
+  leadForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-    console.log("Payload pronto para integração:", Object.fromEntries(formData.entries()));
+    if (!formFeedback) return;
 
-    
-      Exemplo de integração:
-      fetch("https://seu-endpoint.com/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(formData.entries()))
-      })
-    
+    const formData = new FormData(leadForm);
+    const nome = String(formData.get("nome") || "").trim();
+    const empresa = String(formData.get("empresa") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const whatsapp = String(formData.get("whatsapp") || "").trim();
+    const segmento = String(formData.get("segmento") || "").trim();
+    const faturamento = String(formData.get("faturamento") || "").trim();
+    const objetivo = String(formData.get("objetivo") || "").trim();
 
-    leadForm.reset();*/
+    if (!nome || !empresa || !email || !whatsapp || !segmento || !faturamento || !objetivo) {
+      formFeedback.textContent = "Preencha todos os campos obrigatórios para continuar.";
+      formFeedback.style.color = "var(--color-error)";
+      return;
+    }
+
+    if (faturamento === "Até 29 mil") {
+      openModal();
+      return;
+    }
+
+    submitLeadToWhatsApp();
   });
 });
 
