@@ -290,75 +290,123 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const submitLeadToWhatsApp = () => {
-    if (!leadForm) return;
+  // ================================================================
+// CONFIGURAÇÃO DO WEBHOOK
+// ================================================================
+const WEBHOOK_URL = 'https://n8n.kaironcompany.com.br/webhook/kairon-leads';
+const WEBHOOK_API_KEY = 'KaironCompany123@!';
 
-    const formData = new FormData(leadForm);
-    const nome = String(formData.get("nome") || "").trim();
-    const empresa = String(formData.get("empresa") || "").trim();
-    const email = String(formData.get("email") || "").trim();
-    const whatsapp = String(formData.get("whatsapp") || "").trim();
-    const segmento = String(formData.get("segmento") || "").trim();
-    const faturamento = String(formData.get("faturamento") || "").trim();
-    const objetivo = String(formData.get("objetivo") || "").trim();
+// ================================================================
+// FUNÇÃO: Enviar lead para o N8N → Supabase → Dashboard
+// ================================================================
+const submitLead = async (leadData) => {
+  // Mostrar feedback de carregamento
+  if (formFeedback) {
+    formFeedback.textContent = "Enviando suas informações...";
+    formFeedback.style.color = "var(--color-cyan)";
+  }
 
-    const seuNumero = "5561982179483";
-    const mensagem = `Olá! Novo lead da landing page:
+  try {
+    const response = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': WEBHOOK_API_KEY
+      },
+      body: JSON.stringify({
+        name:    leadData.nome,
+        company: leadData.empresa,
+        email:   leadData.email,
+        phone:   leadData.whatsapp,
+        service: leadData.segmento,
+        revenue: leadData.faturamento,
+        message: leadData.objetivo,
+        source:  'landing_page'
+      }),
+      signal: AbortSignal.timeout(15000)
+    });
 
-Nome: ${nome}
-Empresa: ${empresa}
-Email: ${email}
-WhatsApp: ${whatsapp}
-Segmento: ${segmento}
-Faturamento mensal: ${faturamento}
-Objetivo principal: ${objetivo}`;
+    const result = await response.json();
 
-    const url = `https://wa.me/${seuNumero}?text=${encodeURIComponent(mensagem)}`;
+    if (result.success) {
+      // Sucesso — mostrar mensagem e limpar formulário
+      if (formFeedback) {
+        formFeedback.textContent = "✅ Recebemos suas informações! Nossa equipe entrará em contato em breve.";
+        formFeedback.style.color = "var(--color-cyan)";
+      }
+      leadForm.reset();
+    } else {
+      // Erro retornado pelo webhook
+      if (formFeedback) {
+        formFeedback.textContent = "Ocorreu um erro ao enviar. Por favor, tente novamente.";
+        formFeedback.style.color = "var(--color-error)";
+      }
+    }
 
+  } catch (error) {
+    // Erro de conexão ou timeout
     if (formFeedback) {
-      formFeedback.textContent = "Redirecionando para o WhatsApp...";
-      formFeedback.style.color = "var(--color-cyan)";
-    }
-
-    window.open(url, "_blank", "noopener,noreferrer");
-    leadForm.reset();
-  };
-
-  modalConfirmBtn?.addEventListener("click", () => {
-    closeModal();
-    submitLeadToWhatsApp();
-  });
-
-  modalDeclineBtn?.addEventListener("click", () => {
-    showModalView("decline");
-  });
-
-  leadForm?.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (!formFeedback) return;
-
-    const formData = new FormData(leadForm);
-    const nome = String(formData.get("nome") || "").trim();
-    const empresa = String(formData.get("empresa") || "").trim();
-    const email = String(formData.get("email") || "").trim();
-    const whatsapp = String(formData.get("whatsapp") || "").trim();
-    const segmento = String(formData.get("segmento") || "").trim();
-    const faturamento = String(formData.get("faturamento") || "").trim();
-    const objetivo = String(formData.get("objetivo") || "").trim();
-
-    if (!nome || !empresa || !email || !whatsapp || !segmento || !faturamento || !objetivo) {
-      formFeedback.textContent = "Preencha todos os campos obrigatórios para continuar.";
+      formFeedback.textContent = "Erro de conexão. Verifique sua internet e tente novamente.";
       formFeedback.style.color = "var(--color-error)";
-      return;
     }
+    console.error('[Webhook] Erro:', error);
+  }
+};
 
-    if (faturamento === "Até 29 mil") {
-      openModal();
-      return;
-    }
+// ================================================================
+// HELPER: Extrair dados do formulário
+// ================================================================
+const getLeadData = () => {
+  const formData = new FormData(leadForm);
+  return {
+    nome:        String(formData.get("nome")        || "").trim(),
+    empresa:     String(formData.get("empresa")     || "").trim(),
+    email:       String(formData.get("email")       || "").trim(),
+    whatsapp:    String(formData.get("whatsapp")    || "").trim(),
+    segmento:    String(formData.get("segmento")    || "").trim(),
+    faturamento: String(formData.get("faturamento") || "").trim(),
+    objetivo:    String(formData.get("objetivo")    || "").trim()
+  };
+};
 
-    submitLeadToWhatsApp();
-  });
+// ================================================================
+// EVENTOS
+// ================================================================
+
+// Botão confirmar do modal
+modalConfirmBtn?.addEventListener("click", () => {
+  closeModal();
+  if (!leadForm) return;
+  submitLead(getLeadData());
 });
 
+// Botão recusar do modal
+modalDeclineBtn?.addEventListener("click", () => {
+  showModalView("decline");
+});
+
+// Submissão do formulário
+leadForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (!formFeedback) return;
+
+  const leadData = getLeadData();
+
+  // Validação dos campos obrigatórios
+  if (!leadData.nome || !leadData.empresa || !leadData.email ||
+      !leadData.whatsapp || !leadData.segmento || !leadData.faturamento || !leadData.objetivo) {
+    formFeedback.textContent = "Preencha todos os campos obrigatórios para continuar.";
+    formFeedback.style.color = "var(--color-error)";
+    return;
+  }
+
+  // Faturamento baixo → abre modal de qualificação
+  if (leadData.faturamento === "Até 29 mil") {
+    openModal();
+    return;
+  }
+
+  // Enviar lead para o dashboard via webhook
+  submitLead(leadData);
+});
