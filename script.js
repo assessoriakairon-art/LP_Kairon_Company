@@ -370,6 +370,49 @@ document.addEventListener("DOMContentLoaded", () => {
     showModalView("decline");
   });
 
+  // Rótulos amigáveis para mensagens de validação
+  const FIELD_LABELS = {
+    nome: "Nome",
+    empresa: "Empresa / Marca",
+    email: "E-mail",
+    whatsapp: "WhatsApp",
+    segmento: "Qual o seu momento?",
+    faturamento: "Qual o faturamento mensal da sua empresa?",
+    objetivo: "Objetivo principal"
+  };
+
+  const setFieldInvalid = (name, message) => {
+    const input = leadForm?.querySelector(`[name="${name}"]`);
+    if (!input) return;
+    const field = input.closest(".field");
+    if (!field) return;
+    field.classList.add("is-invalid");
+    const errorEl = field.querySelector(`.field-error[data-error-for="${name}"]`);
+    if (errorEl) errorEl.textContent = message;
+  };
+
+  const clearFieldInvalid = (name) => {
+    const input = leadForm?.querySelector(`[name="${name}"]`);
+    if (!input) return;
+    const field = input.closest(".field");
+    if (!field) return;
+    field.classList.remove("is-invalid");
+    const errorEl = field.querySelector(`.field-error[data-error-for="${name}"]`);
+    if (errorEl) errorEl.textContent = "";
+  };
+
+  const clearAllFieldErrors = () => {
+    Object.keys(FIELD_LABELS).forEach(clearFieldInvalid);
+  };
+
+  // Limpa o erro de cada campo quando o usuário começa a digitar/alterar
+  Object.keys(FIELD_LABELS).forEach((name) => {
+    const input = leadForm?.querySelector(`[name="${name}"]`);
+    if (!input) return;
+    const events = input.tagName === "SELECT" ? ["change"] : ["input", "change"];
+    events.forEach((evt) => input.addEventListener(evt, () => clearFieldInvalid(name)));
+  });
+
   // Submissão do formulário
   leadForm?.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -378,10 +421,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const leadData = getLeadData();
 
-    if (!leadData.nome || !leadData.empresa || !leadData.email ||
-        !leadData.whatsapp || !leadData.segmento || !leadData.faturamento || !leadData.objetivo) {
-      formFeedback.textContent = "Preencha todos os campos obrigatórios para continuar.";
+    clearAllFieldErrors();
+
+    const missingFields = [];
+    Object.keys(FIELD_LABELS).forEach((name) => {
+      if (!leadData[name]) {
+        setFieldInvalid(name, "Este campo é obrigatório.");
+        missingFields.push(FIELD_LABELS[name]);
+      }
+    });
+
+    if (missingFields.length > 0) {
+      const lista = missingFields.length === 1
+        ? `o campo "${missingFields[0]}"`
+        : `os campos: ${missingFields.map((f) => `"${f}"`).join(", ")}`;
+      formFeedback.textContent = `Faltou preencher ${lista}. Por favor, complete antes de enviar.`;
       formFeedback.style.color = "var(--color-error)";
+
+      const firstInvalid = leadForm.querySelector(".field.is-invalid input, .field.is-invalid select, .field.is-invalid textarea");
+      if (firstInvalid) {
+        firstInvalid.focus({ preventScroll: false });
+        firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
       return;
     }
 
