@@ -3,6 +3,71 @@
    Typography: Clash Display + Satoshi para um visual tecnológico e sofisticado
    Density: balanced/high-end com hero dramático e seções compactas para conversão */
 
+/* ===== Fontes hospedadas localmente (evita conexão com terceiros) ===== */
+@font-face {
+  font-family: "Satoshi";
+  src: url("fonts/satoshi-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("fonts/satoshi-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("fonts/satoshi-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("fonts/satoshi-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("fonts/satoshi-900.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Clash Display";
+  src: url("fonts/clash-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Clash Display";
+  src: url("fonts/clash-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Clash Display";
+  src: url("fonts/clash-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Clash Display";
+  src: url("fonts/clash-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root,
 [data-theme="light"] {
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
@@ -2729,4 +2794,20 @@ body.modal-open {
   .graph-node.pulse {
     animation: none;
   }
+}
+
+/* ===== Renderização preguiçosa das seções fora da tela =====
+   O navegador adia o layout/paint das seções abaixo da dobra até
+   que o usuário role até elas. Reduz o trabalho na primeira pintura
+   e melhora o Speed Index no celular. */
+.problem-section,
+.solution-section,
+.services-section,
+.differentiators-section,
+.proof-section,
+.process-section,
+.cta-section,
+.faq-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
