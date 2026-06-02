@@ -18,33 +18,41 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <!-- Fonte carregada de forma não bloqueante (não atrasa a primeira renderização) -->
   <link
     href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&f[]=clash-display@400,500,600,700&display=swap"
     rel="stylesheet"
+    media="print"
+    onload="this.media='all'"
   />
-  
-  <link rel="icon" type="image/png" href="../imagens/lp_kairon_company.png">
+  <noscript>
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&f[]=clash-display@400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+  </noscript>
+
+  <link rel="icon" type="image/png" href="imagens/lp_kairon_company.png">
 
   <link rel="stylesheet" href="styles.css" />
 
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
   <script defer src="script.js"></script>
 
-  <!-- Facebook Pixel Code -->
+  <!-- Facebook Pixel Code (carregado após o load para não bloquear a renderização) -->
   <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window,document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1300197334957627');
-    fbq('track', 'PageView');
+    window.addEventListener('load', function () {
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window,document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1300197334957627');
+      fbq('track', 'PageView');
+    });
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
@@ -65,9 +73,12 @@
       <a href="#topo" class="brand" aria-label="Kairon Company">
   <span class="brand-mark" aria-hidden="true">
     <img
-      src="../imagens/lp_kairon_company.png"
+      src="imagens/lp_kairon_company.png"
       alt="Logo Kairon Company"
       class="brand-logo"
+      width="40"
+      height="40"
+      decoding="async"
     />
   </span>
   <span class="brand-text">
@@ -692,9 +703,12 @@
         <a href="#topo" class="brand brand-footer" aria-label="Kairon Company">
           <span class="brand-mark" aria-hidden="true">
             <img
-      src="../imagens/lp_kairon_company.png"
+      src="imagens/lp_kairon_company.png"
       alt="Logo Kairon Company"
       class="brand-logo"
+      width="40"
+      height="40"
+      decoding="async"
     />
           </span>
           <span class="brand-text">

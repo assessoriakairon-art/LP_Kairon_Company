@@ -2700,3 +2700,33 @@ canvas,
 body.modal-open {
   overflow: hidden;
 }
+
+/* ===== Animações do gráfico da hero (substituem o GSAP) ===== */
+@keyframes kairon-draw-line {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes kairon-pulse-node {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+}
+
+.graph-path {
+  animation: kairon-draw-line 2.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+
+.graph-node.pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: kairon-pulse-node 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .graph-path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .graph-node.pulse {
+    animation: none;
+  }
+}
