@@ -40,20 +40,44 @@
 
   <script defer src="script.js"></script>
 
-  <!-- Facebook Pixel Code (carregado após o load para não bloquear a renderização) -->
+  <!-- Conexão antecipada com o Facebook: corta DNS+TLS na hora de carregar o Pixel -->
+  <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
+  <link rel="dns-prefetch" href="https://connect.facebook.net" />
+  <link rel="preconnect" href="https://www.facebook.com" crossorigin />
+
+  <!-- Facebook Pixel Code
+       Carregado sob demanda: na 1ª interação do visitante ou após 3,5s.
+       Isso tira o custo do script de terceiro da janela crítica de
+       renderização (melhora o TBT/LCP) sem perder o registro de PageView. -->
   <script>
-    window.addEventListener('load', function () {
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window,document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1300197334957627');
-      fbq('track', 'PageView');
-    });
+    (function () {
+      var loaded = false;
+      var events = ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'];
+
+      function loadPixel() {
+        if (loaded) return;
+        loaded = true;
+        events.forEach(function (ev) {
+          window.removeEventListener(ev, loadPixel, { passive: true });
+        });
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1300197334957627');
+        fbq('track', 'PageView');
+      }
+
+      events.forEach(function (ev) {
+        window.addEventListener(ev, loadPixel, { passive: true });
+      });
+      // Rede de segurança: dispara o PageView mesmo sem interação.
+      setTimeout(loadPixel, 3500);
+    })();
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"

@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", () => {
     header?.classList.toggle("is-scrolled", window.scrollY > 12);
-  });
+  }, { passive: true });
 
   if (cursorGlow && window.matchMedia("(hover: hover)").matches) {
     window.addEventListener("mousemove", (event) => {
