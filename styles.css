@@ -183,7 +183,7 @@ body {
   font-family: var(--font-body, sans-serif);
   font-size: var(--text-base);
   line-height: 1.6;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   color: var(--color-text);
   background:
     radial-gradient(circle at 15% 20%, rgba(249, 115, 22, 0.12), transparent 22%),
@@ -234,7 +234,7 @@ h3,
 h4 {
   font-family: var(--font-display, sans-serif);
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
