@@ -155,10 +155,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
   modalCloseEls?.forEach((el) => el.addEventListener("click", closeModal));
 
+  // ================================================================
+  // POPUP DE STATUS — feedback central do envio do formulário
+  // ================================================================
+  const statusModal = document.getElementById("statusModal");
+  const statusModalTitle = document.getElementById("statusModalTitle");
+  const statusModalText = document.getElementById("statusModalText");
+  const statusModalIcon = statusModal?.querySelector("[data-status-icon]");
+  const statusCloseEls = statusModal?.querySelectorAll("[data-status-close]");
+
+  const STATUS_ICONS = { success: "✓", error: "✕", warning: "!" };
+
+  const showStatus = (state, title, message) => {
+    if (!statusModal) return;
+    statusModal.setAttribute("data-status-state", state);
+    if (statusModalIcon) statusModalIcon.textContent = STATUS_ICONS[state] || "!";
+    if (statusModalTitle) statusModalTitle.textContent = title;
+    if (statusModalText) statusModalText.textContent = message;
+    statusModal.classList.add("is-open");
+    statusModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+  };
+
+  const closeStatus = () => {
+    if (!statusModal) return;
+    statusModal.classList.remove("is-open");
+    statusModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  };
+
+  statusCloseEls?.forEach((el) => el.addEventListener("click", closeStatus));
+
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && leadModal?.classList.contains("is-open")) {
-      closeModal();
-    }
+    if (event.key !== "Escape") return;
+    if (statusModal?.classList.contains("is-open")) closeStatus();
+    if (leadModal?.classList.contains("is-open")) closeModal();
   });
 
   // ================================================================
@@ -181,10 +212,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const submitLead = async (leadData) => {
+    const submitBtn = leadForm?.querySelector(".submit-btn");
     if (formFeedback) {
       formFeedback.textContent = "Enviando suas informações...";
       formFeedback.style.color = "var(--color-cyan)";
     }
+    if (submitBtn) submitBtn.disabled = true;
 
     try {
       const response = await fetch(WEBHOOK_URL, {
@@ -206,26 +239,45 @@ document.addEventListener("DOMContentLoaded", () => {
         signal: AbortSignal.timeout(15000)
       });
 
-      const result = await response.json();
+      let result = {};
+      try {
+        result = await response.json();
+      } catch (_) {
+        // resposta sem JSON válido — tratamos pelo status HTTP abaixo
+      }
 
-      if (result.success) {
-        if (formFeedback) {
-          formFeedback.textContent = "✅ Recebemos suas informações! Nossa equipe entrará em contato em breve.";
-          formFeedback.style.color = "var(--color-cyan)";
-        }
+      if (response.ok && result.success) {
+        if (formFeedback) formFeedback.textContent = "";
         leadForm.reset();
+        showStatus(
+          "success",
+          "Dados enviados com sucesso!",
+          "Recebemos suas informações. Nossa equipe entrará em contato em breve."
+        );
       } else {
-        if (formFeedback) {
-          formFeedback.textContent = "Ocorreu um erro ao enviar. Por favor, tente novamente.";
-          formFeedback.style.color = "var(--color-error)";
-        }
+        const motivo = result && result.message
+          ? result.message
+          : `O servidor respondeu com o status ${response.status} (${response.statusText || "erro"}).`;
+        if (formFeedback) formFeedback.textContent = "";
+        showStatus(
+          "error",
+          "Não foi possível enviar",
+          `Ocorreu um erro ao enviar seus dados. Motivo: ${motivo} Por favor, tente novamente.`
+        );
       }
     } catch (error) {
-      if (formFeedback) {
-        formFeedback.textContent = "Erro de conexão. Verifique sua internet e tente novamente.";
-        formFeedback.style.color = "var(--color-error)";
-      }
+      const motivo = error?.name === "TimeoutError"
+        ? "o tempo de conexão se esgotou (sem resposta do servidor)."
+        : (error?.message || "falha na conexão de rede.");
+      if (formFeedback) formFeedback.textContent = "";
+      showStatus(
+        "error",
+        "Erro de conexão",
+        `Não conseguimos enviar seus dados porque ${motivo} Verifique sua internet e tente novamente.`
+      );
       console.error("[Webhook] Erro:", error);
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
     }
   };
 
@@ -294,26 +346,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     clearAllFieldErrors();
 
-    const missingFields = [];
+    const problems = [];
+
+    // 1) Campos obrigatórios
     Object.keys(FIELD_LABELS).forEach((name) => {
       if (!leadData[name]) {
         setFieldInvalid(name, "Este campo é obrigatório.");
-        missingFields.push(FIELD_LABELS[name]);
+        problems.push(`${FIELD_LABELS[name]}: não preenchido`);
       }
     });
 
-    if (missingFields.length > 0) {
-      const lista = missingFields.length === 1
-        ? `o campo "${missingFields[0]}"`
-        : `os campos: ${missingFields.map((f) => `"${f}"`).join(", ")}`;
-      formFeedback.textContent = `Faltou preencher ${lista}. Por favor, complete antes de enviar.`;
-      formFeedback.style.color = "var(--color-error)";
+    // 2) Formato do e-mail (só valida se foi preenchido)
+    if (leadData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(leadData.email)) {
+      setFieldInvalid("email", "Informe um e-mail válido (ex.: nome@empresa.com).");
+      problems.push("E-mail: formato inválido");
+    }
 
-      const firstInvalid = leadForm.querySelector(".field.is-invalid input, .field.is-invalid select, .field.is-invalid textarea");
-      if (firstInvalid) {
-        firstInvalid.focus({ preventScroll: false });
-        firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
+    // 3) WhatsApp precisa ter ao menos 10 dígitos (DDD + número)
+    const whatsappDigits = leadData.whatsapp.replace(/\D/g, "");
+    if (leadData.whatsapp && whatsappDigits.length < 10) {
+      setFieldInvalid("whatsapp", "Informe um WhatsApp válido com DDD.");
+      problems.push("WhatsApp: número incompleto");
+    }
+
+    if (problems.length > 0) {
+      formFeedback.textContent = "";
+      showStatus(
+        "warning",
+        "Revise os dados do formulário",
+        `Antes de enviar, corrija os seguintes pontos — ${problems.join("; ")}.`
+      );
       return;
     }
 
