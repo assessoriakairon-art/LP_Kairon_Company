@@ -30,11 +30,11 @@
   <meta name="twitter:description" content="Marketing, tráfego pago, landing pages, automação e IA para marcas que querem crescer com clareza, controle e previsibilidade." />
   <meta name="twitter:image" content="https://kaironcompany.com.br/imagens/lp_kairon_company.png" />
 
-  <!-- Fontes hospedadas localmente: preload das críticas (título + corpo) para acelerar o LCP no celular -->
-  <link rel="preload" href="fonts/clash-700.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin />
-
   <link rel="icon" type="image/png" href="imagens/lp_kairon_company.png">
+
+  <!-- Preload das fontes críticas (título 800 + corpo 400) para acelerar o LCP -->
+  <link rel="preload" href="fonts/poppins-800.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="styles.css" />
 
@@ -85,7 +85,7 @@
   </noscript>
   <!-- End Facebook Pixel Code -->
 
-  <!-- Dados estruturados: identifica a empresa e o FAQ para o Google -->
+  <!-- Dados estruturados: identifica a empresa para o Google -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -117,44 +117,6 @@
         "name": "Kairon Company",
         "inLanguage": "pt-BR",
         "publisher": { "@id": "https://kaironcompany.com.br/#organizacao" }
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://kaironcompany.com.br/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "A Kairon atende quais tipos de negócio?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Atendemos principalmente médicos, restaurantes e empresas que precisam unir marketing, tecnologia e automação para crescer com mais eficiência."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Vocês fazem apenas tráfego pago?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Não. Também criamos landing pages, sistemas, dashboards, automações e integrações para melhorar toda a operação comercial e digital."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "A Kairon consegue integrar com formulário, CRM e automações?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Sim. Estruturamos integrações com webhook, CRM, automações, APIs e ferramentas como Make e N8N."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "A inteligência artificial substitui a equipe?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Não. A IA apoia a análise, acelera tarefas e melhora a tomada de decisão, mas funciona como reforço estratégico da operação."
-            }
-          }
-        ]
       }
     ]
   }
@@ -192,7 +154,6 @@
         <a href="#servicos">Serviços</a>
         <a href="#diferenciais">Diferenciais</a>
         <a href="#prova">Resultados</a>
-        <a href="#faq">FAQ</a>
       </nav>
 
       <div class="header-actions">
@@ -208,7 +169,6 @@
       <a href="#servicos">Serviços</a>
       <a href="#diferenciais">Diferenciais</a>
       <a href="#prova">Resultados</a>
-      <a href="#faq">FAQ</a>
       <a href="#contato" class="btn btn-primary">Quero posicionar minha marca</a>
     </div>
   </header>
@@ -697,36 +657,6 @@
       </div>
     </section>
 
-    <section class="section faq-section" id="faq">
-      <div class="container faq-layout">
-        <div class="section-intro reveal">
-          <p class="section-tag">FAQ</p>
-          <h2>Perguntas frequentes antes de começar.</h2>
-        </div>
-
-        <div class="faq-list">
-          <details class="faq-item glass-card reveal">
-            <summary>A Kairon atende quais tipos de negócio?</summary>
-            <p>Atendemos principalmente médicos, restaurantes e empresas que precisam unir marketing, tecnologia e automação para crescer com mais eficiência.</p>
-          </details>
-
-          <details class="faq-item glass-card reveal">
-            <summary>Vocês fazem apenas tráfego pago?</summary>
-            <p>Não. Também criamos landing pages, sistemas, dashboards, automações e integrações para melhorar toda a operação comercial e digital.</p>
-          </details>
-
-          <details class="faq-item glass-card reveal">
-            <summary>A Kairon consegue integrar com formulário, CRM e automações?</summary>
-            <p>Sim. Estruturamos integrações com webhook, CRM, automações, APIs e ferramentas como Make e N8N.</p>
-          </details>
-
-          <details class="faq-item glass-card reveal">
-            <summary>A inteligência artificial substitui a equipe?</summary>
-            <p>Não. A IA apoia a análise, acelera tarefas e melhora a tomada de decisão, mas funciona como reforço estratégico da operação.</p>
-          </details>
-        </div>
-      </div>
-    </section>
   </main>
 
   <div

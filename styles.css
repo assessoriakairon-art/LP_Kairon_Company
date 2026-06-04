@@ -1,69 +1,41 @@
 /* Art direction: Kairon Company → futurista, cyberpunk, IA premium, alto impacto
    Palette: preto, laranja, branco e cinza com alto contraste e visual premium
-   Typography: Clash Display + Satoshi para um visual tecnológico e sofisticado
+   Typography: Poppins (sans geométrica) — títulos extra-bold, corpo regular
    Density: balanced/high-end com hero dramático e seções compactas para conversão */
 
-/* ===== Fontes hospedadas localmente (evita conexão com terceiros) ===== */
+/* ===== Tipografia: Poppins (geométrica, auto-hospedada — sem terceiros) ===== */
 @font-face {
-  font-family: "Satoshi";
-  src: url("fonts/satoshi-300.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Satoshi";
-  src: url("fonts/satoshi-400.woff2") format("woff2");
+  font-family: "Poppins";
+  src: url("fonts/poppins-400.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Satoshi";
-  src: url("fonts/satoshi-500.woff2") format("woff2");
+  font-family: "Poppins";
+  src: url("fonts/poppins-500.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Satoshi";
-  src: url("fonts/satoshi-700.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Satoshi";
-  src: url("fonts/satoshi-900.woff2") format("woff2");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Clash Display";
-  src: url("fonts/clash-400.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Clash Display";
-  src: url("fonts/clash-500.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Clash Display";
-  src: url("fonts/clash-600.woff2") format("woff2");
+  font-family: "Poppins";
+  src: url("fonts/poppins-600.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Clash Display";
-  src: url("fonts/clash-700.woff2") format("woff2");
+  font-family: "Poppins";
+  src: url("fonts/poppins-700.woff2") format("woff2");
   font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("fonts/poppins-800.woff2") format("woff2");
+  font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
@@ -93,8 +65,8 @@
   --space-24: 6rem;
   --space-32: 8rem;
 
-  --font-display: "Clash Display", "Inter", sans-serif;
-  --font-body: "Satoshi", "Inter", sans-serif;
+  --font-display: "Poppins", "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Poppins", "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   --color-bg: #f5f5f5;
   --color-surface: rgba(255, 255, 255, 0.82);
@@ -2702,7 +2674,7 @@ canvas,
 }
 
 .lead-modal-card h3 {
-  font-family: "Clash Display", "Satoshi", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.5rem, 3.4vw, 2rem);
   font-weight: 600;
   line-height: 1.18;
