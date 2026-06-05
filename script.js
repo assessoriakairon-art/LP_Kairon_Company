@@ -300,8 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
     email: "E-mail",
     whatsapp: "WhatsApp",
     segmento: "Qual o seu momento?",
-    faturamento: "Qual o faturamento mensal da sua empresa?",
-    objetivo: "Objetivo principal"
+    faturamento: "Qual o faturamento mensal da sua empresa?"
   };
 
   const setFieldInvalid = (name, message) => {
@@ -326,6 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const clearAllFieldErrors = () => {
     Object.keys(FIELD_LABELS).forEach(clearFieldInvalid);
+    clearFieldInvalid("qualifica");
   };
 
   // Limpa o erro de cada campo quando o usuário começa a digitar/alterar
@@ -335,6 +335,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const events = input.tagName === "SELECT" ? ["change"] : ["input", "change"];
     events.forEach((evt) => input.addEventListener(evt, () => clearFieldInvalid(name)));
   });
+
+  // ================================================================
+  // QUALIFICAÇÃO INLINE — aparece quando o faturamento é "Até 29 mil"
+  // ================================================================
+  const faturamentoSelect = leadForm?.querySelector('[name="faturamento"]');
+  const qualificaWrap = leadForm?.querySelector('[data-qualifica]');
+  const qualificaSelect = leadForm?.querySelector('[name="qualifica"]');
+
+  const toggleQualifica = () => {
+    if (!qualificaWrap) return;
+    const mostrar = !!faturamentoSelect && faturamentoSelect.value === "Até 29 mil";
+    qualificaWrap.hidden = !mostrar;
+    if (!mostrar && qualificaSelect) {
+      qualificaSelect.value = "";
+      clearFieldInvalid("qualifica");
+    }
+  };
+
+  faturamentoSelect?.addEventListener("change", toggleQualifica);
+  qualificaSelect?.addEventListener("change", () => clearFieldInvalid("qualifica"));
+  toggleQualifica();
 
   // Submissão do formulário
   leadForm?.addEventListener("submit", (event) => {
@@ -369,6 +390,12 @@ document.addEventListener("DOMContentLoaded", () => {
       problems.push("WhatsApp: número incompleto");
     }
 
+    // 4) Quando o faturamento é "Até 29 mil", a qualificação é obrigatória
+    if (leadData.faturamento === "Até 29 mil" && !qualificaSelect?.value) {
+      setFieldInvalid("qualifica", "Selecione uma opção.");
+      problems.push("Seguir com o serviço: não preenchido");
+    }
+
     if (problems.length > 0) {
       formFeedback.textContent = "";
       showStatus(
@@ -379,8 +406,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (leadData.faturamento === "Até 29 mil") {
-      openModal();
+    // "Ainda não no momento" → mostra a mensagem de acolhimento (Instagram), sem enviar
+    if (leadData.faturamento === "Até 29 mil" && qualificaSelect?.value === "Ainda não no momento") {
+      showModalView("decline");
+      leadModal?.classList.add("is-open");
+      leadModal?.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
       return;
     }
 

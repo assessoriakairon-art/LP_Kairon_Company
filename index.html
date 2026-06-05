@@ -132,32 +132,30 @@
   <header class="site-header" id="topo">
     <div class="container header-shell">
       <a href="#topo" class="brand" aria-label="Kairon Company">
-  <span class="brand-mark" aria-hidden="true">
-    <img
-      src="imagens/lp_kairon_company.png"
-      alt="Logo Kairon Company"
-      class="brand-logo"
-      width="40"
-      height="40"
-      decoding="async"
-    />
-  </span>
-  <span class="brand-text">
-    <strong>Kairon</strong>
-    <small>Company</small>
-  </span>
-</a>
-
+        <span class="brand-mark" aria-hidden="true">
+          <img
+            src="imagens/lp_kairon_company.png"
+            alt="Logo Kairon Company"
+            class="brand-logo"
+            width="40"
+            height="40"
+            decoding="async"
+          />
+        </span>
+        <span class="brand-text">
+          <strong>Kairon</strong>
+          <small>Company</small>
+        </span>
+      </a>
 
       <nav class="nav desktop-nav" aria-label="Principal">
-        <a href="#solucao">Solução</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#diferenciais">Diferenciais</a>
-        <a href="#prova">Resultados</a>
+        <a href="#prova">Depoimentos</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#diferenciais">Sobre a Kairon</a>
       </nav>
 
       <div class="header-actions">
-        <a href="#contato" class="btn btn-primary btn-sm">Entrar em Contato</a>
+        <a href="#contato" class="btn btn-primary btn-sm">Fale Conosco</a>
         <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -165,494 +163,316 @@
     </div>
 
     <div class="mobile-menu" aria-hidden="true">
-      <a href="#solucao">Solução</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#diferenciais">Diferenciais</a>
-      <a href="#prova">Resultados</a>
-      <a href="#contato" class="btn btn-primary">Quero posicionar minha marca</a>
+      <a href="#prova">Depoimentos</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#diferenciais">Sobre a Kairon</a>
+      <a href="#contato" class="btn btn-primary">Fale Conosco</a>
     </div>
   </header>
 
   <main id="conteudo">
-    <section class="hero section hero-grid">
-      <div class="container hero-layout">
-        <div class="hero-copy">
-          <div class="eyebrow">
-            <span class="pulse-dot"></span>
-            Marketing, tecnologia e IA para empresas que querem crescer com mais controle.
+    <!-- ================= HERO ================= -->
+    <section class="lp-hero">
+      <div class="container lp-hero-grid">
+        <div class="lp-hero-copy">
+          <span class="eyebrow reveal"><span class="pulse-dot"></span>Marketing · Tecnologia · IA</span>
+          <h1 class="reveal">A aceleradora que faz empresas comuns virarem <span class="lp-accent-red">máquinas de crescimento</span> na América Latina.</h1>
+          <p class="lp-hero-sub reveal">Seja acelerado pela empresa que mais entrega resultados no Brasil, com cases que dobraram de tamanho em menos de 12 meses de parceria.</p>
+          <div class="lp-hero-actions reveal">
+            <a href="#contato" class="btn btn-primary btn-lg magnetic">Agende já uma reunião</a>
+            <a href="#solucao" class="btn btn-secondary btn-lg">Ver como funciona</a>
           </div>
-
-          <h1>
-            Marketing, tecnologia e IA para sua empresa crescer com previsibilidade.
-          </h1>
-
-          <p class="hero-lead">
-            Estruturamos marketing, páginas, sistemas, dashboards e inteligência artificial para transformar operações confusas em crescimento previsível.
-          </p>
-
-          <div class="hero-cta-group">
-            <a href="#contato" class="btn btn-primary btn-lg magnetic">Quero entender como a Kairon pode me ajudar</a>
-            <a href="#contato" class="btn btn-secondary btn-lg">Falar com a equipe</a>
-          </div>
-
-          <div class="hero-metrics">
-            <article class="metric-chip glass-card">
-              <strong data-counter="120">120</strong>
-              <span>Operações estruturadas com foco em crescimento</span>
-            </article>
-            <article class="metric-chip glass-card">
-              <strong data-counter="3270">3270</strong>
-              <span>Leads acompanhados com rastreamento e análise</span>
-            </article>
-            <article class="metric-chip glass-card">
-              <strong data-counter="5.8" data-decimals="1">0</strong>
-              <span>Campanhas otimizadas com base em dados reais</span>
-            </article>
+          <div class="lp-hero-trust reveal">
+            <div class="lp-trust-item">
+              <span class="lp-trust-n"><strong data-counter="120">120</strong></span>
+              <span class="lp-trust-l">Operações estruturadas com foco em crescimento</span>
+            </div>
+            <span class="lp-trust-sep"></span>
+            <div class="lp-trust-item">
+              <span class="lp-trust-n"><strong data-counter="3270">3270</strong></span>
+              <span class="lp-trust-l">Leads acompanhados com rastreamento e análise</span>
+            </div>
+            <span class="lp-trust-sep"></span>
+            <div class="lp-trust-item">
+              <span class="lp-trust-n"><strong data-counter="5.8" data-decimals="1">0</strong>x</span>
+              <span class="lp-trust-l">ROAS médio em operações com oferta validada</span>
+            </div>
           </div>
         </div>
 
-        <div class="hero-visual reveal">
-          <div class="orbital-ring ring-a"></div>
-          <div class="orbital-ring ring-b"></div>
-          <div class="orbital-ring ring-c"></div>
+        <!-- ===== FORMULÁRIO (markup preservado: ids, names, ordem, options, validação) ===== -->
+        <div class="lp-form-card reveal" id="contato">
+          <form class="lead-form reveal" id="leadForm" action="" method="post" novalidate>
+            <p class="form-required-note"><span class="required-mark" aria-hidden="true">*</span> Campos obrigatórios</p>
+            <div class="form-grid">
+              <div class="field">
+                <label for="nome">Nome <span class="required-mark" aria-hidden="true">*</span></label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required aria-required="true" />
+                <span class="field-error" data-error-for="nome"></span>
+              </div>
 
-          <div class="ai-panel glass-card">
-            <div class="panel-topbar">
-              <span></span><span></span><span></span>
+              <div class="field">
+                <label for="empresa">Empresa / Marca <span class="required-mark" aria-hidden="true">*</span></label>
+                <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa" required aria-required="true" />
+                <span class="field-error" data-error-for="empresa"></span>
+              </div>
+
+              <div class="field">
+                <label for="email">E-mail <span class="required-mark" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required aria-required="true" />
+                <span class="field-error" data-error-for="email"></span>
+              </div>
+
+              <div class="field">
+                <label for="whatsapp">WhatsApp <span class="required-mark" aria-hidden="true">*</span></label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required aria-required="true" />
+                <span class="field-error" data-error-for="whatsapp"></span>
+              </div>
+
+              <div class="field field-full">
+                <label for="segmento">Qual o seu momento? <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="segmento" name="segmento" required aria-required="true">
+                  <option value="">Selecione uma opção</option>
+                  <option>Quero gerar mais leads</option>
+                  <option>Quero escalar campanhas</option>
+                  <option>Preciso de uma nova landing page</option>
+                  <option>Quero automatizar meu comercial</option>
+                  <option>Preciso reposicionar minha marca</option>
+                </select>
+                <span class="field-error" data-error-for="segmento"></span>
+              </div>
+
+              <div class="field field-full">
+                <label for="faturamento">Qual o faturamento mensal da sua empresa? <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="faturamento" name="faturamento" required aria-required="true">
+                  <option value="">Selecione uma opção</option>
+                  <option>Até 29 mil</option>
+                  <option>De 30 mil até 50 mil</option>
+                  <option>De 51 mil até 120 mil</option>
+                  <option>De 121 até 300 mil</option>
+                  <option>+300 mil</option>
+                </select>
+                <span class="field-error" data-error-for="faturamento"></span>
+              </div>
+
+              <div class="field field-full" data-qualifica hidden>
+                <label for="qualifica">Nossa aceleradora tem investimento a partir de R$ 3.000/mês. Você gostaria de seguir com o nosso serviço? <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="qualifica" name="qualifica" aria-required="true">
+                  <option value="">Selecione uma opção</option>
+                  <option>Sim, faz sentido</option>
+                  <option>Ainda não no momento</option>
+                </select>
+                <span class="field-error" data-error-for="qualifica"></span>
+              </div>
+
             </div>
 
-            <div class="panel-head">
-              <div>
-                <p class="panel-label">Kairon Company</p>
-                <h2>Direção estratégica para negócios que querem crescer com mais inteligência.</h2>
-              </div>
-              <div class="status-badge online">
-                <i></i>
-                Sistema alinhado
-              </div>
-            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block submit-btn magnetic">
+              Receber Plano de Aceleração
+            </button>
 
-            <div class="signal-grid">
-              <div class="signal-card">
-                <span>Posicionamento</span>
-                <strong>41%</strong>
-              </div>
-              <div class="signal-card">
-                <span>Clareza</span>
-                <strong>-28%</strong>
-              </div>
-              <div class="signal-card">
-                <span>Presença</span>
-                <strong>247</strong>
-              </div>
-            </div>
-
-            <div class="chart-shell">
-              <div class="chart-lines">
-                <span class="line line-1"></span>
-                <span class="line line-2"></span>
-                <span class="line line-3"></span>
-              </div>
-
-              <svg class="growth-svg" viewBox="0 0 600 240" preserveAspectRatio="none" aria-hidden="true">
-                <defs>
-                  <linearGradient id="lineGradient" x1="0" y1="0" x2="100%" y2="0">
-                    <stop offset="0%" stop-color="#ff1025"></stop>
-                    <stop offset="100%" stop-color="#8a0f19"></stop>
-                  </linearGradient>
-                  <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="100%">
-                    <stop offset="0%" stop-color="rgba(255,16,37,0.28)"></stop>
-                    <stop offset="100%" stop-color="rgba(255,16,37,0)"></stop>
-                  </linearGradient>
-                </defs>
-
-                <path class="area-path" d="M0 190 C60 175, 110 145, 155 156 C200 168, 250 124, 290 132 C350 145, 390 74, 435 82 C475 90, 525 34, 600 18 L600 240 L0 240 Z"></path>
-                <path class="graph-path" d="M0 190 C60 175, 110 145, 155 156 C200 168, 250 124, 290 132 C350 145, 390 74, 435 82 C475 90, 525 34, 600 18"></path>
-                <circle class="graph-node" cx="155" cy="156" r="5"></circle>
-                <circle class="graph-node" cx="290" cy="132" r="5"></circle>
-                <circle class="graph-node" cx="435" cy="82" r="5"></circle>
-                <circle class="graph-node pulse" cx="600" cy="18" r="7"></circle>
-              </svg>
-
-              <div class="chart-float chart-float-a glass-card">
-                <span>Conversões</span>
-                <strong>18.4%</strong>
-              </div>
-
-              <div class="chart-float chart-float-b glass-card">
-                <span>IA Score</span>
-                <strong>97/100</strong>
-              </div>
-            </div>
-
-            <div class="feed-grid">
-              <article class="feed-card">
-                <span>Marca Kairon</span>
-                <strong>direção definida</strong>
-                <small>últimas 72h</small>
-              </article>
-              <article class="feed-card">
-                <span>Sistema visual</span>
-                <strong>identidade consistente</strong>
-                <small>resposta imediata</small>
-              </article>
-            </div>
-          </div>
+            <p class="form-feedback" id="formFeedback" aria-live="polite"></p>
+          </form>
         </div>
       </div>
     </section>
 
-    <section class="section contact-section" id="contato">
-  <div class="container contact-shell">
-    <div class="contact-copy reveal">
-      <p class="section-tag">Contato</p>
-      <h2>Ative uma operação mais estratégica para o seu negócio.</h2>
-      <p>Preencha seus dados e a equipe da Kairon entrará em contato para entender seu momento, avaliar oportunidades e mostrar como marketing, tecnologia e IA podem trabalhar juntos na sua empresa.</p>
-
-      <div class="contact-points">
-        <div class="contact-point glass-card">
-          <strong>Resposta rápida</strong>
-          <span>Resposta rápida da equipe comercial.</span>
+    <!-- ================= CLIENTES ================= -->
+    <section class="lp-section" id="clientes">
+      <div class="container">
+        <div class="lp-section-head center reveal">
+          <span class="lp-kicker">Clientes</span>
+          <h2>Alguns clientes que já escalamos</h2>
         </div>
-
-        <div class="contact-point glass-card">
-          <strong>Integração pronta</strong>
-          <span>Integração pronta com CRM, automação e rastreamento.</span>
+        <div class="lp-strip-carousel" aria-label="Logos de clientes">
+          <div class="lp-strip-group">
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/divas-cirurgias.png" alt="Divas Cirurgias" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/divas-bem-estar.png" alt="Divas Bem-Estar" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/odonto-smart.png" alt="OdontoSmart" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/asa-food.png" alt="AsaFood" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/monom.png" alt="Monom" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/jjplan.png" alt="JJPlan" decoding="async" /></span>
+          </div>
+          <!-- Cópia para o loop contínuo (sempre preenchido) -->
+          <div class="lp-strip-group" aria-hidden="true">
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/divas-cirurgias.png" alt="Divas Cirurgias" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/divas-bem-estar.png" alt="Divas Bem-Estar" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/odonto-smart.png" alt="OdontoSmart" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/asa-food.png" alt="AsaFood" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/monom.png" alt="Monom" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/jjplan.png" alt="JJPlan" decoding="async" /></span>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <form class="lead-form glass-card reveal" id="leadForm" action="" method="post" novalidate>
-      <p class="form-required-note"><span class="required-mark" aria-hidden="true">*</span> Campos obrigatórios</p>
-      <div class="form-grid">
-        <div class="field">
-          <label for="nome">Nome <span class="required-mark" aria-hidden="true">*</span></label>
-          <input type="text" id="nome" name="nome" placeholder="Seu nome" required aria-required="true" />
-          <span class="field-error" data-error-for="nome"></span>
-        </div>
-
-        <div class="field">
-          <label for="empresa">Empresa / Marca <span class="required-mark" aria-hidden="true">*</span></label>
-          <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa" required aria-required="true" />
-          <span class="field-error" data-error-for="empresa"></span>
-        </div>
-
-        <div class="field">
-          <label for="email">E-mail <span class="required-mark" aria-hidden="true">*</span></label>
-          <input type="email" id="email" name="email" placeholder="voce@empresa.com" required aria-required="true" />
-          <span class="field-error" data-error-for="email"></span>
-        </div>
-
-        <div class="field">
-          <label for="whatsapp">WhatsApp <span class="required-mark" aria-hidden="true">*</span></label>
-          <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required aria-required="true" />
-          <span class="field-error" data-error-for="whatsapp"></span>
-        </div>
-
-        <div class="field field-full">
-          <label for="segmento">Qual o seu momento? <span class="required-mark" aria-hidden="true">*</span></label>
-          <select id="segmento" name="segmento" required aria-required="true">
-            <option value="">Selecione uma opção</option>
-            <option>Quero gerar mais leads</option>
-            <option>Quero escalar campanhas</option>
-            <option>Preciso de uma nova landing page</option>
-            <option>Quero automatizar meu comercial</option>
-            <option>Preciso reposicionar minha marca</option>
-          </select>
-          <span class="field-error" data-error-for="segmento"></span>
-        </div>
-
-        <div class="field field-full">
-          <label for="faturamento">Qual o faturamento mensal da sua empresa? <span class="required-mark" aria-hidden="true">*</span></label>
-          <select id="faturamento" name="faturamento" required aria-required="true">
-            <option value="">Selecione uma opção</option>
-            <option>Até 29 mil</option>
-            <option>De 30 mil até 50 mil</option>
-            <option>De 51 mil até 120 mil</option>
-            <option>De 121 até 300 mil</option>
-            <option>+300 mil</option>
-          </select>
-          <span class="field-error" data-error-for="faturamento"></span>
-        </div>
-
-        <div class="field field-full">
-          <label for="objetivo">Objetivo principal <span class="required-mark" aria-hidden="true">*</span></label>
-          <textarea
-            id="objetivo"
-            name="objetivo"
-            rows="5"
-            placeholder="Descreva seu cenário, meta e desafio atual"
-            required
-            aria-required="true"
-          ></textarea>
-          <span class="field-error" data-error-for="objetivo"></span>
+        <div class="lp-center" style="margin-top: 44px;">
+          <a href="#contato" class="btn btn-primary btn-lg magnetic">Seja mais um case de Sucesso</a>
         </div>
       </div>
+    </section>
 
-      <button type="submit" class="btn btn-primary btn-lg submit-btn magnetic">
-        Quero receber um diagnóstico estratégico
-      </button>
-
-      <p class="form-note">Ao enviar, sua empresa entra na fila de análise da Kairon Company.</p>
-      <p class="form-feedback" id="formFeedback" aria-live="polite"></p>
-    </form>
-  </div>
-</section>
-
-
-    <section class="section problem-section" id="problema">
-      <div class="container split-layout">
-        <div class="section-intro reveal">
-          <p class="section-tag">Problema</p>
+    <!-- ================= PROBLEMA ================= -->
+    <section class="lp-section lp-prob" id="problema">
+      <div class="container">
+        <div class="lp-section-head reveal">
+          <span class="lp-kicker">O problema</span>
           <h2>O mercado não perdoa operação lenta, marketing confuso e vendas sem previsibilidade.</h2>
-          <p>
-            Muitas empresas investem em divulgação, mas continuam sem controle sobre os dados, sem uma estrutura comercial eficiente e sem clareza sobre o que realmente gera resultado. Quando tudo depende de tentativa e erro, o crescimento vira sorte.
-          </p>
+          <p>Muitas empresas investem em divulgação, mas seguem sem controle sobre os dados, sem estrutura comercial eficiente e sem clareza sobre o que realmente gera resultado. Quando tudo depende de tentativa e erro, o crescimento vira sorte.</p>
         </div>
-
-<div class="problem-cards">
-          <article class="problem-card glass-card reveal">
-            <span class="problem-index">01</span>
+        <div class="lp-grid-3">
+          <article class="lp-card reveal">
+            <div class="lp-card-num">01</div>
             <h3>Leads caros e pouco qualificados</h3>
             <p>Você investe em marketing, mas os contatos que chegam nem sempre têm intenção real de compra.</p>
           </article>
-
-          <article class="problem-card glass-card reveal">
-            <span class="problem-index">02</span>
+          <article class="lp-card reveal">
+            <div class="lp-card-num">02</div>
             <h3>Falta de previsibilidade</h3>
             <p>Sem processo, sem acompanhamento e sem dados organizados, cada mês parece começar do zero.</p>
           </article>
-
-          <article class="problem-card glass-card reveal">
-            <span class="problem-index">03</span>
-            <h3>Imagem e posicionamento fracos</h3>
+          <article class="lp-card reveal">
+            <div class="lp-card-num">03</div>
+            <h3>Posicionamento fraco</h3>
             <p>Quando a comunicação não transmite valor, a empresa perde autoridade, confiança e oportunidades de venda.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section solution-section" id="solucao">
-      <div class="container solution-shell glass-frame">
-        <div class="section-intro reveal narrow">
-          <p class="section-tag">Solução</p>
-          <h2>A Kairon Company acelera o crescimento com estratégia e tecnologia.</h2>
-          <p>
-            Em vez de ações isoladas, criamos uma estrutura conectada que une aquisição, comunicação, páginas, CRM,
-            automações, sistemas e análise de dados para fazer seu negócio crescer com mais controle.
-          </p>
+    <!-- ================= SOLUÇÃO ================= -->
+    <section class="lp-section lp-solution" id="solucao">
+      <div class="container">
+        <div class="lp-section-head reveal">
+          <span class="lp-kicker">O que faremos</span>
+          <h2>Entenda como podemos acelerar a sua empresa!</h2>
         </div>
-
-        <div class="solution-grid">
-          <article class="solution-card reveal">
-            <div class="icon-shell">01</div>
-            <h3>Aquisição inteligente</h3>
-            <p>Campanhas orientadas por dados e intenção de compra para atrair o público certo e gerar oportunidades mais qualificadas.</p>
-          </article>
-
-          <article class="solution-card reveal">
-            <div class="icon-shell">02</div>
-            <h3>Conversão de alto nível</h3>
-            <p>Landing pages com mensagem clara, oferta bem posicionada e estrutura pensada para aumentar a resposta e reduzir o atrito.</p>
-          </article>
-
-          <article class="solution-card reveal">
-            <div class="icon-shell">03</div>
-            <h3>Automação comercial</h3>
-            <p>Fluxos inteligentes para captar, organizar, responder e acompanhar leads no momento certo.</p>
-          </article>
-        </div>
+        <ul class="lp-checklist reveal">
+          <li>Aumentar o seu faturamento de forma previsível</li>
+          <li>Parar de depender de você para a empresa funcionar</li>
+          <li>Construir uma máquina de vendas que não depende de sorte</li>
+          <li>Estruturar processos e um time que entrega resultado</li>
+          <li>Entender de verdade os seus indicadores e números</li>
+          <li>Acelerar o seu crescimento com método, não no achismo</li>
+          <li>Tornar a sua empresa referência no mercado</li>
+        </ul>
       </div>
     </section>
 
-    <section class="section services-section" id="servicos">
+    <!-- ================= DIFERENCIAIS ================= -->
+    <section class="lp-section" id="diferenciais">
       <div class="container">
-        <div class="section-intro reveal">
-          <p class="section-tag">Serviços</p>
-          <h2>Serviços pensados para gerar crescimento, lucratividade e eficiência operacional.</h2>
-        </div>
-
-        <div class="services-bento">
-          <article class="service-card service-lg glass-card reveal">
-            <div class="service-top">
-              <span class="service-kicker">01</span>
-              <h3>Marketing para médicos</h3>
-            </div>
-            <p>Ajudamos médicos a reduzir a dependência dos convênios e atrair mais pacientes particulares, fortalecendo posicionamento, autoridade e valor percebido.</p>
-            <ul>
-              <li>Estratégia para atrair pacientes particulares</li>
-              <li>Posicionamento e comunicação de autoridade</li>
-              <li>Landing pages para agendamento</li>
-            </ul>
-          </article>
-
-          <article class="service-card glass-card reveal">
-            <div class="service-top">
-              <span class="service-kicker">02</span>
-              <h3>Landing pages</h3>
-            </div>
-            <p>Criamos páginas com estrutura estratégica, visual profissional e comunicação persuasiva para transformar visitas em oportunidades reais.</p>
-          </article>
-
-          <article class="service-card glass-card reveal">
-            <div class="service-top">
-              <span class="service-kicker">03</span>
-              <h3>Automação</h3>
-            </div>
-            <p>Integramos formulários, CRM, atendimento, follow-up e processos internos para reduzir tarefas manuais e aumentar a eficiência.</p>
-          </article>
-
-          <article class="service-card service-wide glass-card reveal">
-            <div class="service-top">
-              <span class="service-kicker">04</span>
-              <h3>IA integrada à operação</h3>
-            </div>
-            <p>Nossa inteligência artificial se conecta aos sistemas, dashboards e páginas para analisar dados, apoiar decisões, otimizar campanhas e trazer mais inteligência para o marketing e para a operação.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section differentiators-section" id="diferenciais">
-      <div class="container">
-        <div class="section-intro reveal">
-          <p class="section-tag">Diferenciais</p>
+        <div class="lp-section-head reveal">
+          <span class="lp-kicker">Por que a Kairon</span>
           <h2>A maioria entrega partes soltas. A Kairon entrega uma operação conectada.</h2>
         </div>
-
-        <div class="diff-timeline">
-          <article class="diff-item glass-card reveal">
-            <span class="diff-number">01</span>
-            <div>
-              <h3>Decisão baseada em dados reais</h3>
-              <p>Analisamos métricas, comportamento e desempenho para tomar decisões mais inteligentes e escalar com mais segurança.</p>
-            </div>
+        <div class="lp-grid-4">
+          <article class="lp-card reveal">
+            <div class="lp-card-num">01</div>
+            <h3>Decisão baseada em dados reais</h3>
+            <p>Analisamos métricas, comportamento e desempenho para decidir com mais inteligência e escalar com segurança.</p>
           </article>
-
-          <article class="diff-item glass-card reveal">
-            <span class="diff-number">02</span>
-            <div>
-              <h3>IA aplicada de forma prática</h3>
-              <p>Usamos inteligência artificial para acelerar análises, apoiar o marketing e gerar mais eficiência na operação.</p>
-            </div>
+          <article class="lp-card reveal">
+            <div class="lp-card-num">02</div>
+            <h3>IA aplicada de forma prática</h3>
+            <p>Usamos inteligência artificial para acelerar análises, apoiar o marketing e gerar mais eficiência.</p>
           </article>
-
-          <article class="diff-item glass-card reveal">
-            <span class="diff-number">03</span>
-            <div>
-              <h3>Marketing e tecnologia juntos</h3>
-              <p>Unimos aquisição, páginas, sistemas, automação e dashboards em uma estrutura que trabalha de forma integrada.</p>
-            </div>
+          <article class="lp-card reveal">
+            <div class="lp-card-num">03</div>
+            <h3>Marketing e tecnologia juntos</h3>
+            <p>Aquisição, páginas, sistemas, automação e dashboards em uma estrutura que trabalha integrada.</p>
           </article>
-
-<article class="diff-item glass-card reveal">
-            <span class="diff-number">04</span>
-            <div>
-              <h3>Posicionamento que transmite valor</h3>
-              <p>Construímos uma presença digital mais forte, profissional e alinhada com o nível de resultado que sua empresa quer alcançar.</p>
-            </div>
+          <article class="lp-card reveal">
+            <div class="lp-card-num">04</div>
+            <h3>Posicionamento que transmite valor</h3>
+            <p>Construímos uma presença digital mais forte, profissional e alinhada ao resultado que você quer alcançar.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section proof-section" id="prova">
+    <!-- ================= RESULTADOS / PROVA SOCIAL ================= -->
+    <section class="lp-section lp-results" id="prova">
       <div class="container">
-        <div class="section-intro reveal">
-          <p class="section-tag">Prova social</p>
-          <h2>Resultados que unem posicionamento, estrutura e performance.</h2>
+        <div class="lp-section-head center reveal">
+          <span class="lp-kicker">Depoimentos</span>
+          <h2>Os nossos clientes falam por nós</h2>
         </div>
-
-        <div class="proof-grid">
-          <div class="results-panel glass-card reveal">
-            <div class="result-stat">
-              <span>ROAS escalado</span>
-              <strong>5.8x</strong>
-              <small>média de operações com oferta validada</small>
-            </div>
-
-            <div class="result-stat">
-              <span>Leads gerados</span>
-              <strong>12.400</strong>
-              <small>em múltiplos segmentos de aquisição</small>
-            </div>
-
-            <div class="result-stat">
-              <span>Crescimento de conversão</span>
-              <strong>63%</strong>
-              <small>após reestruturação de página e copy</small>
-            </div>
+        <div class="lp-metrics">
+          <div class="lp-metric reveal">
+            <div class="lp-metric-big">5.8x</div>
+            <div class="lp-metric-lbl">ROAS médio em operações com oferta validada</div>
           </div>
-
-          <div class="testimonials-stack">
-            <article class="testimonial-card glass-card reveal">
-              <p>Antes, nosso marketing era solto e sem direção. Com a Kairon, passamos a ter mais clareza, mais organização e uma operação muito mais estratégica.</p>
-              <strong>Cliente Kairon</strong>
-              <span></span>
+          <div class="lp-metric reveal">
+            <div class="lp-metric-big">12.400</div>
+            <div class="lp-metric-lbl">Leads gerados em múltiplos segmentos de aquisição</div>
+          </div>
+          <div class="lp-metric reveal">
+            <div class="lp-metric-big">63%</div>
+            <div class="lp-metric-lbl">De aumento em conversão após reestruturação de página e copy</div>
+          </div>
+        </div>
+        <div class="lp-carousel" aria-label="Depoimentos de clientes">
+          <div class="lp-carousel-group">
+            <article class="lp-quote">
+              <div class="lp-stars" aria-hidden="true">★★★★★</div>
+              <p>“Saímos de R$ 80 mil para R$ 150 mil por mês com a Kairon e agora com previsibilidade. Hoje a clínica roda sozinha e eu trabalho no negócio, não dentro dele.”</p>
+              <div class="lp-who"><img class="lp-av" src="imagens/clientes/divas-cirurgias.png" alt="Divas Cirurgia Programada" width="48" height="48" decoding="async" /><span><span class="lp-nm">Divas Cirurgia Programada</span><span class="lp-rl">Cliente Kairon</span></span></div>
             </article>
-
-            <article class="testimonial-card glass-card reveal">
-              <p>A diferença não foi só no visual. Melhoramos a percepção da marca, organizamos os processos e começamos a acompanhar melhor os resultados.</p>
-              <strong>Cliente Kairon</strong>
-              <span></span>
+            <article class="lp-quote">
+              <div class="lp-stars" aria-hidden="true">★★★★★</div>
+              <p>“Saímos de 150 para mais de 300 agendamentos por semana com a estratégia da Kairon. Mais que o dobro, em pouquíssimo tempo.”</p>
+              <div class="lp-who"><img class="lp-av" src="imagens/clientes/divas-bem-estar.png" alt="Clínica Divas Bem-Estar" width="48" height="48" decoding="async" /><span><span class="lp-nm">Clínica Divas Bem-Estar</span><span class="lp-rl">Cliente Kairon</span></span></div>
             </article>
-
-            <article class="testimonial-card glass-card reveal">
-              <p>A Kairon integrou marketing, tecnologia e operação de um jeito que fez o negócio funcionar de forma mais inteligente.</p>
-              <strong>Cliente Kairon</strong>
-              <span></span>
+            <article class="lp-quote">
+              <div class="lp-stars" aria-hidden="true">★★★★★</div>
+              <p>“Com a equipe da Kairon conseguimos reposicionar a Odonto Smart para atrair mais pacientes particulares e diminuir a dependência dos convênios.”</p>
+              <div class="lp-who"><img class="lp-av" src="imagens/clientes/odonto-smart.png" alt="Odonto Smart" width="48" height="48" decoding="async" /><span><span class="lp-nm">Odonto Smart</span><span class="lp-rl">Cliente Kairon</span></span></div>
+            </article>
+          </div>
+          <!-- Cópia para o loop contínuo (sempre preenchido) -->
+          <div class="lp-carousel-group" aria-hidden="true">
+            <article class="lp-quote">
+              <div class="lp-stars" aria-hidden="true">★★★★★</div>
+              <p>“Saímos de R$ 80 mil para R$ 150 mil por mês com a Kairon e agora com previsibilidade. Hoje a clínica roda sozinha e eu trabalho no negócio, não dentro dele.”</p>
+              <div class="lp-who"><img class="lp-av" src="imagens/clientes/divas-cirurgias.png" alt="Divas Cirurgia Programada" width="48" height="48" decoding="async" /><span><span class="lp-nm">Divas Cirurgia Programada</span><span class="lp-rl">Cliente Kairon</span></span></div>
+            </article>
+            <article class="lp-quote">
+              <div class="lp-stars" aria-hidden="true">★★★★★</div>
+              <p>“Saímos de 150 para mais de 300 agendamentos por semana com a estratégia da Kairon. Mais que o dobro, em pouquíssimo tempo.”</p>
+              <div class="lp-who"><img class="lp-av" src="imagens/clientes/divas-bem-estar.png" alt="Clínica Divas Bem-Estar" width="48" height="48" decoding="async" /><span><span class="lp-nm">Clínica Divas Bem-Estar</span><span class="lp-rl">Cliente Kairon</span></span></div>
+            </article>
+            <article class="lp-quote">
+              <div class="lp-stars" aria-hidden="true">★★★★★</div>
+              <p>“Com a equipe da Kairon conseguimos reposicionar a Odonto Smart para atrair mais pacientes particulares e diminuir a dependência dos convênios.”</p>
+              <div class="lp-who"><img class="lp-av" src="imagens/clientes/odonto-smart.png" alt="Odonto Smart" width="48" height="48" decoding="async" /><span><span class="lp-nm">Odonto Smart</span><span class="lp-rl">Cliente Kairon</span></span></div>
             </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section process-section" id="processo">
+    <!-- ================= PROCESSO ================= -->
+    <section class="lp-section" id="processo">
       <div class="container">
-        <div class="section-intro reveal">
-          <p class="section-tag">Processo</p>
+        <div class="lp-section-head center reveal">
+          <span class="lp-kicker">Como funciona</span>
           <h2>Do diagnóstico à escala em uma jornada simples e estratégica.</h2>
         </div>
-
-        <div class="process-rail">
-          <article class="process-step glass-card reveal">
-            <span>01</span>
-            <h3>Diagnóstico</h3>
-            <p>Entendemos seu negócio, seus gargalos, sua operação e seus objetivos.</p>
-          </article>
-
-          <article class="process-step glass-card reveal">
-            <span>02</span>
-            <h3>Arquitetura</h3>
-            <p>Planejamos a estratégia de marketing, tecnologia, páginas, automações e análise de dados.</p>
-          </article>
-
-          <article class="process-step glass-card reveal">
-            <span>03</span>
-            <h3>Execução</h3>
-            <p>Colocamos as campanhas, estruturas, sistemas e integrações no ar com foco em performance.</p>
-          </article>
-
-          <article class="process-step glass-card reveal">
-            <span>04</span>
-            <h3>Otimização</h3>
-            <p>Acompanhamos os dados, ajustamos a operação e fortalecemos o que gera resultado.</p>
-          </article>
+        <div class="lp-steps">
+          <div class="lp-step reveal"><div class="lp-step-badge">1</div><h3>Diagnóstico</h3><p>Entendemos seu negócio, seus gargalos, sua operação e seus objetivos.</p></div>
+          <div class="lp-step reveal"><div class="lp-step-badge">2</div><h3>Arquitetura</h3><p>Planejamos marketing, tecnologia, páginas, automações e análise de dados.</p></div>
+          <div class="lp-step reveal"><div class="lp-step-badge">3</div><h3>Execução</h3><p>Colocamos campanhas, estruturas, sistemas e integrações no ar com foco em performance.</p></div>
+          <div class="lp-step reveal"><div class="lp-step-badge">4</div><h3>Otimização</h3><p>Acompanhamos os dados, ajustamos a operação e fortalecemos o que gera resultado.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="section cta-section">
+    <!-- ================= CTA BAND (escassez) ================= -->
+    <section class="lp-section">
       <div class="container">
-        <div class="cta-panel glass-frame reveal">
-          <div>
-            <p class="section-tag">Escassez estratégica</p>
-            <h2>Menos volume, mais estratégia e acompanhamento.</h2>
-            <p>Se a sua empresa quer crescer com mais estrutura, inteligência e previsibilidade, este pode ser o momento certo para dar o próximo passo.</p>
-          </div>
-          <div>
-            <a href="#contato" class="btn btn-primary btn-lg magnetic">Reservar minha análise</a>
-          </div>
+        <div class="lp-cta-band reveal">
+          <span class="eyebrow"><span class="pulse-dot"></span>Vagas limitadas</span>
+          <h2>Aceleramos poucas empresas por vez e nem sempre temos vagas abertas para novos parceiros.</h2>
+          <p>Aceleramos um número limitado de negócios por vez para garantir crescimento real em cada parceria. Agende uma reunião e descubra se há vaga para a sua.</p>
+          <a href="#contato" class="btn btn-primary btn-lg magnetic">Agende já uma reunião</a>
         </div>
       </div>
     </section>
@@ -681,8 +501,8 @@
         <p class="lead-modal-tag">Atenção</p>
         <h3 id="leadModalTitle">Antes de finalizar, um ponto importante.</h3>
         <p class="lead-modal-text">
-          Nossa assessoria completa tem um investimento inicial a partir de
-          <strong>R$ 2.500/mês</strong>. Esse valor faz sentido para o momento
+          Nossa aceleradora completa tem um investimento inicial a partir de
+          <strong>R$ 3.000/mês</strong>. Esse valor faz sentido para o momento
           atual da sua empresa?
         </p>
 
@@ -700,7 +520,7 @@
         <p class="lead-modal-tag">Tudo bem</p>
         <h3>Entendemos perfeitamente.</h3>
         <p class="lead-modal-text">
-          No momento, nosso modelo de assessoria completo pode não ser o melhor
+          No momento, nosso modelo de aceleradora completo pode não ser o melhor
           encaixe para o seu negócio — mas queremos te ajudar a chegar nesse
           próximo nível.
         </p>
@@ -762,13 +582,13 @@
         <a href="#topo" class="brand brand-footer" aria-label="Kairon Company">
           <span class="brand-mark" aria-hidden="true">
             <img
-      src="imagens/lp_kairon_company.png"
-      alt="Logo Kairon Company"
-      class="brand-logo"
-      width="40"
-      height="40"
-      decoding="async"
-    />
+              src="imagens/lp_kairon_company.png"
+              alt="Logo Kairon Company"
+              class="brand-logo"
+              width="40"
+              height="40"
+              decoding="async"
+            />
           </span>
           <span class="brand-text">
             <strong>Kairon</strong>
@@ -776,19 +596,23 @@
           </span>
         </a>
 
-        <p>Direção estratégica, identidade visual e marketing digital para marcas que querem presença forte e memorável.</p>
+        <p>Direção estratégica, identidade visual e marketing digital para marcas que querem presença forte, memorável e crescimento previsível.</p>
       </div>
 
       <div class="footer-links">
-        <a href="#solucao">Solução</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#diferenciais">Diferenciais</a>
-        <a href="#prova">Prova social</a>
-        <a href="#contato">Contato</a>
+        <a class="btn-top" href="#topo" aria-label="Voltar ao Topo">
+          <svg class="bt-icon" viewBox="0 0 384 512"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path></svg>
+        </a>
+        <a class="Btn" href="https://www.instagram.com/kairon.company/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512" class="svgIcon"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
+          <span class="text">Instagram</span>
+        </a>
       </div>
     </div>
 
     <small class="footer_copy">
-    &copy; 2026 <a href="https://www.instagram.com/kairon.company/" target="_blank" rel="noopener noreferrer">Kairon Company</a>. Todos os direitos reservados.
+      &copy; 2026 <a href="https://www.instagram.com/kairon.company/" target="_blank" rel="noopener noreferrer">Kairon Company</a>. Todos os direitos reservados.
+    </small>
+  </footer>
 </body>
 </html>
