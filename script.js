@@ -246,7 +246,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // resposta sem JSON válido — tratamos pelo status HTTP abaixo
       }
 
-      if (response.ok && result.success) {
+      // Sucesso = HTTP 2xx, a menos que o corpo diga explicitamente success:false.
+      // O webhook pode responder sem corpo (200 vazio) ou com { success: true }.
+      if (response.ok && result.success !== false) {
         if (formFeedback) formFeedback.textContent = "";
         leadForm.reset();
         showStatus(
