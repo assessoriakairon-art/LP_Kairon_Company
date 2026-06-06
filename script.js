@@ -255,14 +255,50 @@ document.addEventListener("DOMContentLoaded", () => {
           "Recebemos suas informações. Nossa equipe entrará em contato em breve."
         );
       } else {
-        const motivo = result && result.message
-          ? result.message
-          : `O servidor respondeu com o status ${response.status} (${response.statusText || "erro"}).`;
+        // Mapeia os campos retornados pelo servidor para os campos do formulário,
+        // para destacar exatamente onde está o problema.
+        const SERVER_TO_FORM = {
+          name:    "nome",
+          company: "empresa",
+          email:   "email",
+          phone:   "whatsapp",
+          service: "segmento",
+          revenue: "faturamento"
+        };
+
+        const serverErrors = Array.isArray(result?.errors) ? result.errors : [];
+        const detalhes = [];
+        let primeiroCampoInvalido = null;
+
+        serverErrors.forEach((err) => {
+          const formName = SERVER_TO_FORM[err?.field];
+          const msg = (err?.message || "Valor inválido.").trim();
+          if (formName) {
+            setFieldInvalid(formName, msg);
+            if (!primeiroCampoInvalido) primeiroCampoInvalido = formName;
+          }
+          detalhes.push(msg);
+        });
+
+        const motivo = detalhes.length
+          ? detalhes.join("; ")
+          : (result && result.message
+              ? result.message
+              : `o servidor respondeu com o status ${response.status} (${response.statusText || "erro"})`);
+
         if (formFeedback) formFeedback.textContent = "";
+
+        // Leva o usuário até o primeiro campo com problema
+        if (primeiroCampoInvalido) {
+          const alvo = leadForm?.querySelector(`[name="${primeiroCampoInvalido}"]`);
+          alvo?.scrollIntoView({ behavior: "smooth", block: "center" });
+          alvo?.focus({ preventScroll: true });
+        }
+
         showStatus(
           "error",
           "Não foi possível enviar",
-          `Ocorreu um erro ao enviar seus dados. Motivo: ${motivo} Por favor, tente novamente.`
+          `Corrija os seguintes pontos e tente novamente: ${motivo}.`
         );
       }
     } catch (error) {
