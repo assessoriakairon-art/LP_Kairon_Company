@@ -249,6 +249,15 @@ document.addEventListener("DOMContentLoaded", () => {
       // Sucesso = HTTP 2xx, a menos que o corpo diga explicitamente success:false.
       // O webhook pode responder sem corpo (200 vazio) ou com { success: true }.
       if (response.ok && result.success !== false) {
+        // Conversão registrada no Meta Pixel — dispara o evento "Lead" apenas
+        // quando o envio deu certo. O fbq já existe aqui porque o visitante
+        // interagiu com a página (digitou/clicou) para preencher o formulário.
+        if (typeof window.fbq === "function") {
+          window.fbq("track", "Lead", {
+            content_name: "Formulário LP Kairon",
+            content_category: leadData.segmento || ""
+          });
+        }
         if (formFeedback) formFeedback.textContent = "";
         leadForm.reset();
         showStatus(
