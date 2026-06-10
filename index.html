@@ -70,6 +70,13 @@
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '1300197334957627');
         fbq('track', 'PageView');
+
+        // Microsoft Clarity — também sob demanda, pelo mesmo gatilho.
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "x3vpa06onw");
       }
 
       events.forEach(function (ev) {
@@ -121,14 +128,6 @@
     ]
   }
   </script>
-
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "x3vpa06onw");
-</script>
 
 </head>
 <body class="brand-kairon">
@@ -295,21 +294,21 @@
         </div>
         <div class="lp-strip-carousel" aria-label="Logos de clientes">
           <div class="lp-strip-group">
-            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/divas-cirurgias.png" alt="Divas Cirurgias" decoding="async" /></span>
-            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/divas-bem-estar.png" alt="Divas Bem-Estar" decoding="async" /></span>
-            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/odonto-smart.png" alt="OdontoSmart" decoding="async" /></span>
-            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/asa-food.png" alt="AsaFood" decoding="async" /></span>
-            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/monom.png" alt="Monom" decoding="async" /></span>
-            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/jjplan.png" alt="JJPlan" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/divas-cirurgias.png" alt="Divas Cirurgias" loading="lazy" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/divas-bem-estar.png" alt="Divas Bem-Estar" loading="lazy" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/odonto-smart.png" alt="OdontoSmart" loading="lazy" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/asa-food.png" alt="AsaFood" loading="lazy" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/monom.png" alt="Monom" loading="lazy" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/jjplan.jpg" alt="JJPlan" loading="lazy" decoding="async" /></span>
           </div>
           <!-- Cópia para o loop contínuo (sempre preenchido) -->
           <div class="lp-strip-group" aria-hidden="true">
-            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/divas-cirurgias.png" alt="Divas Cirurgias" decoding="async" /></span>
-            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/divas-bem-estar.png" alt="Divas Bem-Estar" decoding="async" /></span>
-            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/odonto-smart.png" alt="OdontoSmart" decoding="async" /></span>
-            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/asa-food.png" alt="AsaFood" decoding="async" /></span>
-            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/monom.png" alt="Monom" decoding="async" /></span>
-            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/jjplan.png" alt="JJPlan" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/divas-cirurgias.png" alt="Divas Cirurgias" loading="lazy" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/divas-bem-estar.png" alt="Divas Bem-Estar" loading="lazy" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/odonto-smart.png" alt="OdontoSmart" loading="lazy" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/asa-food.png" alt="AsaFood" loading="lazy" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/monom.png" alt="Monom" loading="lazy" decoding="async" /></span>
+            <span class="lp-client"><img class="lp-client-logo" src="imagens/clientes/jjplan.jpg" alt="JJPlan" loading="lazy" decoding="async" /></span>
           </div>
         </div>
         <div class="lp-center" style="margin-top: 44px;">
@@ -423,17 +422,17 @@
             <article class="lp-quote">
               <div class="lp-stars" aria-hidden="true">★★★★★</div>
               <p>“Saímos de R$ 80 mil para R$ 150 mil por mês com a Kairon e agora com previsibilidade. Hoje a clínica roda sozinha e eu trabalho no negócio, não dentro dele.”</p>
-              <div class="lp-who"><img class="lp-av" src="imagens/clientes/divas-cirurgias.png" alt="Divas Cirurgia Programada" width="48" height="48" decoding="async" /><span><span class="lp-nm">Divas Cirurgia Programada</span><span class="lp-rl">Cliente Kairon</span></span></div>
+              <div class="lp-who"><img class="lp-av" loading="lazy" src="imagens/clientes/divas-cirurgias.png" alt="Divas Cirurgia Programada" width="48" height="48" decoding="async" /><span><span class="lp-nm">Divas Cirurgia Programada</span><span class="lp-rl">Cliente Kairon</span></span></div>
             </article>
             <article class="lp-quote">
               <div class="lp-stars" aria-hidden="true">★★★★★</div>
               <p>“Saímos de 150 para mais de 300 agendamentos por semana com a estratégia da Kairon. Mais que o dobro, em pouquíssimo tempo.”</p>
-              <div class="lp-who"><img class="lp-av" src="imagens/clientes/divas-bem-estar.png" alt="Clínica Divas Bem-Estar" width="48" height="48" decoding="async" /><span><span class="lp-nm">Clínica Divas Bem-Estar</span><span class="lp-rl">Cliente Kairon</span></span></div>
+              <div class="lp-who"><img class="lp-av" loading="lazy" src="imagens/clientes/divas-bem-estar.png" alt="Clínica Divas Bem-Estar" width="48" height="48" decoding="async" /><span><span class="lp-nm">Clínica Divas Bem-Estar</span><span class="lp-rl">Cliente Kairon</span></span></div>
             </article>
             <article class="lp-quote">
               <div class="lp-stars" aria-hidden="true">★★★★★</div>
               <p>“Com a equipe da Kairon conseguimos reposicionar a Odonto Smart para atrair mais pacientes particulares e diminuir a dependência dos convênios.”</p>
-              <div class="lp-who"><img class="lp-av" src="imagens/clientes/odonto-smart.png" alt="Odonto Smart" width="48" height="48" decoding="async" /><span><span class="lp-nm">Odonto Smart</span><span class="lp-rl">Cliente Kairon</span></span></div>
+              <div class="lp-who"><img class="lp-av" loading="lazy" src="imagens/clientes/odonto-smart.png" alt="Odonto Smart" width="48" height="48" decoding="async" /><span><span class="lp-nm">Odonto Smart</span><span class="lp-rl">Cliente Kairon</span></span></div>
             </article>
           </div>
           <!-- Cópia para o loop contínuo (sempre preenchido) -->
@@ -441,17 +440,17 @@
             <article class="lp-quote">
               <div class="lp-stars" aria-hidden="true">★★★★★</div>
               <p>“Saímos de R$ 80 mil para R$ 150 mil por mês com a Kairon e agora com previsibilidade. Hoje a clínica roda sozinha e eu trabalho no negócio, não dentro dele.”</p>
-              <div class="lp-who"><img class="lp-av" src="imagens/clientes/divas-cirurgias.png" alt="Divas Cirurgia Programada" width="48" height="48" decoding="async" /><span><span class="lp-nm">Divas Cirurgia Programada</span><span class="lp-rl">Cliente Kairon</span></span></div>
+              <div class="lp-who"><img class="lp-av" loading="lazy" src="imagens/clientes/divas-cirurgias.png" alt="Divas Cirurgia Programada" width="48" height="48" decoding="async" /><span><span class="lp-nm">Divas Cirurgia Programada</span><span class="lp-rl">Cliente Kairon</span></span></div>
             </article>
             <article class="lp-quote">
               <div class="lp-stars" aria-hidden="true">★★★★★</div>
               <p>“Saímos de 150 para mais de 300 agendamentos por semana com a estratégia da Kairon. Mais que o dobro, em pouquíssimo tempo.”</p>
-              <div class="lp-who"><img class="lp-av" src="imagens/clientes/divas-bem-estar.png" alt="Clínica Divas Bem-Estar" width="48" height="48" decoding="async" /><span><span class="lp-nm">Clínica Divas Bem-Estar</span><span class="lp-rl">Cliente Kairon</span></span></div>
+              <div class="lp-who"><img class="lp-av" loading="lazy" src="imagens/clientes/divas-bem-estar.png" alt="Clínica Divas Bem-Estar" width="48" height="48" decoding="async" /><span><span class="lp-nm">Clínica Divas Bem-Estar</span><span class="lp-rl">Cliente Kairon</span></span></div>
             </article>
             <article class="lp-quote">
               <div class="lp-stars" aria-hidden="true">★★★★★</div>
               <p>“Com a equipe da Kairon conseguimos reposicionar a Odonto Smart para atrair mais pacientes particulares e diminuir a dependência dos convênios.”</p>
-              <div class="lp-who"><img class="lp-av" src="imagens/clientes/odonto-smart.png" alt="Odonto Smart" width="48" height="48" decoding="async" /><span><span class="lp-nm">Odonto Smart</span><span class="lp-rl">Cliente Kairon</span></span></div>
+              <div class="lp-who"><img class="lp-av" loading="lazy" src="imagens/clientes/odonto-smart.png" alt="Odonto Smart" width="48" height="48" decoding="async" /><span><span class="lp-nm">Odonto Smart</span><span class="lp-rl">Cliente Kairon</span></span></div>
             </article>
           </div>
         </div>
